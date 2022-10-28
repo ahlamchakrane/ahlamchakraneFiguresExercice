@@ -1,51 +1,50 @@
 package com.example.ahlamchakrane.Observer;
 
-import com.example.ahlamchakrane.Element;
-import com.example.ahlamchakrane.Figure;
+import com.example.ahlamchakrane.Composite.Figure;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ObjetParametrageImpl implements ObjetParametrage{
-    private List<Element> elements = new ArrayList<>();
-    private int episseur;
-    private int couleurR;
-    private int couleurC;
+    private List<Figure> figures = new ArrayList<>();
+    private double epaisseurContour;
+    private String couleurRemplissage;
+    private String couleurContour;
     @Override
     public void notifyObservers() {
-        for(Element element: elements) {
-            element.update(this);
+        for(Figure figure: figures) {
+            figure.update(this);
         }
     }
 
     @Override
-    public void addObserver(Element element) {
-        this.elements.add(element);
+    public void addObserver(Figure figure) {
+        this.figures.add(figure);
     }
 
     @Override
-    public void removeObserver(Element element) {
-        this.elements.remove(element);
+    public void removeObserver(Figure figure) {
+        this.figures.remove(figure);
     }
-    public void setEpisseur(int episseur) {
-        this.episseur = episseur;
-        this.notifyObservers(); //une fois l'etat de l'observable se change on notifie les observateurs
+    public void setEpaisseurContour(double epaisseurContour) {
+        this.epaisseurContour = epaisseurContour;
+        this.notifyObservers();
     }
-    public int getEpisseur() {
-        return this.episseur;
+    public double getEpaisseurContour() {
+        return this.epaisseurContour;
     }
-    public void setCouleurR(int episseur) {
-        this.episseur = episseur;
-        this.notifyObservers(); //une fois l'etat de l'observable se change on notifie les observateurs
+    public void setCouleurRemplissage(String couleurRemplissage) {
+        this.couleurRemplissage = couleurRemplissage;
+        this.notifyObservers();
     }
-    public int getCouleurR() {
-        return this.couleurR;
+    public String getCouleurRemplissage() {
+        return this.couleurRemplissage;
     }
-    public void setCouleurC(int couleurR) {
-        this.couleurR = couleurR;
-        this.notifyObservers(); //une fois l'etat de l'observable se change on notifie les observateurs
+    public void setCouleurContour(String couleurContour) {
+        this.couleurContour = couleurContour;
+        this.notifyObservers();
     }
-    public int getCouleurC() {
-        return this.couleurC;
+    public String getCouleurContour() {
+        return this.couleurContour;
     }
 }

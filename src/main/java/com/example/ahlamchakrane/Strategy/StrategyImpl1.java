@@ -1,8 +1,10 @@
 package com.example.ahlamchakrane.Strategy;
 
-public class StrategyImpl1 implements IStrategy {
+import java.io.Serializable;
+
+public class StrategyImpl1 implements IStrategy, Serializable {
     @Override
     public void traiter() {
-        System.out.println("Traitement de strategy");
+        System.out.println("Traitement 1 de strategy");
     }
 }

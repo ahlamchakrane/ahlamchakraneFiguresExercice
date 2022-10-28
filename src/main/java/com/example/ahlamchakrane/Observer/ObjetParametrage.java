@@ -1,10 +1,9 @@
 package com.example.ahlamchakrane.Observer;
 
-import com.example.ahlamchakrane.Element;
-import com.example.ahlamchakrane.Figure;
+import com.example.ahlamchakrane.Composite.Figure;
 
-public interface ObjetParametrage {
+public interface ObjetParametrage { //Observable
     void notifyObservers();
-    void addObserver(Element element);
-    void removeObserver(Element element);
+    void addObserver(Figure figure);
+    void removeObserver(Figure figure);
 }

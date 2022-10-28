@@ -1,16 +1,13 @@
-package com.example.ahlamchakrane;
+package com.example.ahlamchakrane.Composite;
 
 import com.example.ahlamchakrane.Strategy.IStrategy;
 import com.example.ahlamchakrane.Strategy.StrategyImpl1;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectOutputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Dessin {
+public class Dessin extends Figure implements Serializable {
     private IStrategy strategy= new StrategyImpl1();
     private Collection<Figure> figures = new ArrayList<>();
     public void appliquerStrategy() {
@@ -19,7 +16,6 @@ public class Dessin {
     public void setStrategy(IStrategy strategy) {
         this.strategy = strategy;
     }
-    //Les méthodes qui permettent d’ajouter et supprimer des figures du dessin.
     public void addFigure(Figure figure){
         this.figures.add(figure);
     }
@@ -29,8 +25,7 @@ public class Dessin {
     //Une méthode qui permet d’afficher toutes les figures du dessin.
     public void afficher(){
         for(Figure figure: figures){
-            if(figure instanceof  Element)
-            System.out.println(((Element)figure).getCouleurC()+ " "+ ((Element)figure).getCouleurR()+ ((Element)figure).getEpisseur());
+            figure.showFigure();
         }
     }
     //Une méthode qui permet de sérialiser le dessin dans un fichier binaire.
@@ -43,11 +38,19 @@ public class Dessin {
         fileOutputStream.close();
     }
 
-    public Collection<Figure> getFigures() {
-        return figures;
+    @Override
+    public double calculePerimetre() {
+        for (Figure figure : figures){
+           return figure.calculePerimetre();
+        }
+        return 0;
     }
 
-    public void setFigures(Collection<Figure> figures) {
-        this.figures = figures;
+    @Override
+    public double calculeSurface() {
+        for (Figure figure : figures){
+            return figure.calculeSurface();
+        }
+        return 0;
     }
 }
